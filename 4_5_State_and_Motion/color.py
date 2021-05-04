@@ -7,7 +7,7 @@ attributes:
     g - a value between 0-255 for green
     b - a value between 0-255 for blue
 '''
-    
+
 class Color(object):
     
     # __init__ is called when a color is constructed using color.Color(_, _, _)
@@ -16,7 +16,8 @@ class Color(object):
         self.r = r
         
         ## TODO: Set the other two color variables g and b
-        
+        self.g = g
+        self.b = b
 
     # __repr__ is called when a color is printed using print(some_color)
     # It must return a string
@@ -28,8 +29,15 @@ class Color(object):
         ## TODO: Write a string representation for the color
         ## ex. "rgb = [self.r, self.g, self.b]"
         ## Right now this returns an empty string
-        string = ''
+        string = 'rgb = [' + str(self.r) + ',' + str(self.g) + ',' + str(self.b) + ']'
         
         return string
     
+    def __add__(self, other):
+        self.r = (self.r + other.r) /2
+        self.g = (self.g + other.g) /2
+        self.b = (self.b + other.b) /2
+        
+        return Color(self.r, self.g, self.b)
+
     
